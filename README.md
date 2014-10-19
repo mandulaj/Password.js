@@ -27,6 +27,28 @@ var passwd = new Password("secure-password123");
 </script>
 ```
 
+##Usage
+```javascript
+var Password = require('password.js');
+
+var passwd = new Password("secure-password123",{
+  commonWords:[
+    "123456",
+    "password",
+    "admin",
+    "3.14159265"
+  ],
+  minWordDistance: 4,
+  complexity: 9
+}, function(data){
+  console.log(data);
+});
+
+passwd.update("aMuChBe11erPa$$worD");
+
+console.log(passwd.getEntropy());
+```
+
 
 ##Known Issues:
 * the function `wordStrong` crashes the node app with `Segmentation fault` message when large passwords are analyzed in `node 0.10.31`
