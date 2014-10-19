@@ -4,12 +4,16 @@
  *
  * @param {String} password - the password we would like to analyze
  * @param {Object} opts     - any default options we would like to override
+ *    {Array} commonWords       - array of common words that should be checked
+ *    {Integer} minWordDistance - the minimum distance between password and any word from `commonWords` that is acceptable
+ *    {Integer} complexity      - the complexity of the password required {1->simple, 10->overkill}
  * @param {Function} cb     - a callback we would like to run each time we update the password
  */
 function Password(password, opts, cb) {
   this.defaultOpts = {
     commonWords: ["password", "123456", "secret"],
-    minWordDistance: 3
+    minWordDistance: 3,
+    complexity: 5
   };
   if (typeof opts == "function") {
     cb = opts;
@@ -48,7 +52,6 @@ Password.prototype = {
    * @return {Object} - profile of the password (documented in /doc)
    */
   profile: function() {},
-  strength: function() {},
 
   /* checks if the password matches any word in the list of common words
    *
