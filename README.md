@@ -31,21 +31,25 @@ var passwd = new Password("secure-password123");
 ```javascript
 var Password = require('password.js');
 
+// create a new Password object
 var passwd = new Password("secure-password123",{
-  commonWords:[
+  commonWords:[ // list of common words that we want to avoid using
     "123456",
     "password",
     "admin",
     "3.14159265"
   ],
-  minWordDistance: 4,
-  complexity: 9
+  minWordDistance: 4, // the minimal acceptable distance between password and any word in commonWords
+  complexity: 9 // on a scale 1-10 how complex do we expect the password to be
 }, function(data){
+  // any time we update the password we want to get a new password profile and print it
   console.log(data);
 });
 
+// update the password and print it's profile
 passwd.update("aMuChBe11erPa$$worD");
 
+// print the password entropy
 console.log(passwd.getEntropy());
 ```
 
