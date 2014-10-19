@@ -12,6 +12,8 @@ Using `npm`
 ```
 ```javascript
 var Password = require('password.js');
+
+var passwd = new Password("secure-password123");
 ```
 Using `bower`
 ```bash
@@ -19,8 +21,10 @@ Using `bower`
 ```
 ```html
 <script type="text/javascript" src="/path/to/bower_components/passwordjs/dist/password.js"></script>
+<scipit>
+var passwd = new Password("secure-password123");
+</script>
 ```
-
 
 
 ##Known Issues:
