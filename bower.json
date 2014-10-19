@@ -1,0 +1,23 @@
+{
+  "name": "Password.js",
+  "version": "1.0.0",
+  "authors": [
+    "Jakub Mandula <jakub.aludnam@gmail.com>"
+  ],
+  "description": "a utility for checking password strength",
+  "main": "dist/password.js",
+  "keywords": [
+    "password",
+    "util",
+    "strength"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
