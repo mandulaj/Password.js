@@ -67,7 +67,6 @@ Password.prototype = {
       }
     }
 
-    console.log(minDist)
     if (minDist >= this.opts.minWordDistance) {
       return true;
     } else {
@@ -114,9 +113,7 @@ Password.prototype = {
     var substr = "";
     for (var i = 0; i + pattern.length <= str.length; i++) {
       substr = str.substr(i, pattern.length);
-      console.log(substr);
       dist = this._levenshteinDist(substr, pattern);
-      console.log(substr);
       if (dist < minDistance) {
         minDistance = dist;
       }
@@ -132,9 +129,7 @@ Password.prototype = {
   */
 
   _levenshteinDist: function(s, t) {
-    console.log("step");
     var d = []; //2d matrix
-    console.log("step");
     // Step 1
     var n = s.length;
     var m = t.length;
@@ -144,11 +139,9 @@ Password.prototype = {
 
     //Create an array of arrays in javascript (a descending loop is quicker)
     for (var i = n; i >= 0; i--) d[i] = [];
-    console.log("step1");
     // Step 2
     for (var i = n; i >= 0; i--) d[i][0] = i;
     for (var j = m; j >= 0; j--) d[0][j] = j;
-    console.log("step2");
     // Step 3
     for (var i = 1; i <= n; i++) {
         var s_i = s.charAt(i - 1);
