@@ -67,6 +67,62 @@ Password.prototype = {
     return true;
   },
 
+  getCharSet: function(){
+    var charset = 0;
+    var passwd = this.password;
+    if(passwd.match(/[a-z]/)) {
+      charset += 26;
+    }
+    if(passwd.match(/[A-Z]/)) {
+      charset += 26;
+    }
+    if(passwd.match(/[0-9]/)) {
+      charset += 10;
+    }
+    if(passwd.match(/[@!#$%^&*()]/)) {
+      charset += 10;
+    }
+    if(passwd.match(/['"`~\-=+\[\]{}\\|;:,<.>/?]/)) {
+      charset += 20;
+    }
+    if(passwd.match(/\s/)) {
+      charset += 1;
+    }
+
+    var charCodeIndex = {
+      "191": true,
+      "687": true,
+      "879": true,
+    }
+    for (var i = 0, n = passwd.length; i < n; i++) {
+      var charCode = passwd.charCodeAt(i);
+      if (charCode <= 126) {
+        continue;
+      }
+      // Characters 160 - 191
+      if (charCodeIndex["191"] && charCode <= 191){
+        charset += 32;
+        charCodeIndex["191"] = false;
+        continue;
+      }
+
+      // Characters 192 - 687 LATIN
+      if (charCodeIndex["687"] && charCode <= 687){
+        charset += 495;
+        charCodeIndex["697"] = false;
+        continue;
+      }
+
+      //CHaracters 689 - 879 MOD
+      if (charCodeIndex["879"] && charCode <= 879){
+        charset += 292;
+        charCodeIndex["879"] = false;
+        continue;
+      }
+    }
+    return charset;
+  },
+
   /* remove the variable password from memory
   */
   clean: function(){

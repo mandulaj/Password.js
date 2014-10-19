@@ -1,7 +1,7 @@
 var P = require('../index.js');
 
-var s = new P("SeCrEtP@sswrd13_51");
+var s = new P("nbTYJHGFd");
 
 console.time('time');
-console.log(s.wordStrong());
+console.log(s.getCharSet());
 console.timeEnd('time');
