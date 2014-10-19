@@ -54,7 +54,7 @@ Password.prototype = {
    *
    * @return {Bool} - returns true if the word is not in the common words list
    */
-  wordStrong: function() {
+  getWordStrength: function() {
     var word = "";
     var dist = 0;
     var i = 0;
