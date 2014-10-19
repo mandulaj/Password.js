@@ -123,6 +123,17 @@ Password.prototype = {
     return charset;
   },
 
+  /* calculates the entropy of the password
+   *
+   * @return {Float} number of entropy bits the password consists of
+  */
+  getEntropy: function(){
+    var password = this.password;
+    var charSize = this.getCharSet();
+    var passwdlen = password.length;
+    return passwdlen * (Math.log(charSize)/Math.log(2));
+  },
+
   /* remove the variable password from memory
   */
   clean: function(){
