@@ -42,14 +42,14 @@ var passwd = new Password("secure-password123",{
   minWordDistance: 4, // the minimal acceptable distance between password and any word in commonWords
   complexity: 9 // on a scale 1-10 how complex do we expect the password to be
 }, function(data){
-  // any time we update the password we want to get a new password profile and print it
+  // any time we update the password, we want to get a new password profile and print it
   console.log(data);
 });
 
 // update the password and print it's profile
 passwd.update("aMuChBe11erPa$$worD");
 
-// print the password entropy
+// print the password's entropy
 console.log(passwd.getEntropy());
 ```
 
