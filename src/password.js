@@ -242,7 +242,7 @@ Password.prototype = {
 
 
 // are we in browser or in node
-if (module.exports) {
+if (module) {
   module.exports = Password;
 } else {
   window.Password = Password;
