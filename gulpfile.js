@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-  uglify = require('gulp-uglify');
+  uglify = require('gulp-uglify'),
+  mocha  = require('gulp-mocha');
 
 var sourcePath = {
   source: 'src/*.js'
@@ -11,4 +12,9 @@ gulp.task('build', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['build']);
+gulp.task('test', function() {
+  return gulp.src("test/*.js")
+    .pipe(mocha());
+})
+
+gulp.task('default', ['build', 'test']);
