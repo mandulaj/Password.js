@@ -11,7 +11,7 @@
     "util",
     "strength"
   ],
-  "license": "MIT",
+  "license": "GNU",
   "private": true,
   "ignore": [
     "**/.*",

@@ -15,7 +15,7 @@
     "url": "https://github.com/zpiman/Password.js"
   },
   "author": "Jakub Mandula jakub.aludnam@gmail.com",
-  "license": "MIT",
+  "license": "GNU",
   "devDependencies": {
     "expect.js": "^0.3.1",
     "gulp": "*",
