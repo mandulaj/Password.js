@@ -43,7 +43,7 @@ Password.prototype = {
 
     // if we are listening for changes, fire the callback
     if (this.cb !== null) {
-      cb(this.profile());
+      this.cb(this.profile());
     }
   },
 
@@ -51,7 +51,9 @@ Password.prototype = {
    *
    * @return {Object} - profile of the password (documented in /doc)
    */
-  profile: function() {},
+  profile: function() {
+    return this.password;
+  },
 
   /* checks if the password matches any word in the list of common words
    *
