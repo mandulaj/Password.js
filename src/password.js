@@ -8,7 +8,7 @@
 */
 function Password(password, opts, cb) {
   this.defaultOpts = {
-    commonWords: ["password" , "123456", "secret","asdf","qwerty","asdfgh"],
+    commonWords: ["password", "123456", "secret"],
     minWordDistance: 3
   }
   if (typeof opts == "function") {
@@ -55,23 +55,16 @@ Password.prototype = {
    * @return {Bool} - returns true if the word is not in the common words list
   */
   wordStrong: function(){
-    var minDist = this.password.length;
     var word = "";
     var dist = 0;
     var i = 0;
     for( i in this.opts.commonWords) {
       word = this.opts.commonWords[i];
-      dist = this._vagueMatch(this.password, word);
-      if(dist < minDist) {
-        minDist = dist;
+      if (this._vagueMatch(this.password, word)){
+        return false;
       }
     }
-
-    if (minDist >= this.opts.minWordDistance) {
-      return true;
-    } else {
-      return false;
-    }
+    return true;
   },
 
   /* remove the variable password from memory
@@ -99,7 +92,7 @@ Password.prototype = {
    *
    * @param {String} str - the string we will try to match onto
    * @param {String} pattern - the pattern string we are trying to find in `str`
-   * @return {Integer} smallest distance between the words
+   * @return {Bool} returns true if the word distance between the two words is less then or equal to `opts.minWordDistance`
   */
   _vagueMatch: function(str, pattern) {
     str = str.toLowerCase();
@@ -108,17 +101,17 @@ Password.prototype = {
       return this._levenshteinDist(str, pattern);
     }
 
-    var minDistance = str.length;
     var dist = 0;
     var substr = "";
     for (var i = 0; i + pattern.length <= str.length; i++) {
       substr = str.substr(i, pattern.length);
       dist = this._levenshteinDist(substr, pattern);
-      if (dist < minDistance) {
-        minDistance = dist;
+      console.log(dist)
+      if (dist <= this.opts.minWordDistance) {
+        return true;
       }
     }
-    return minDistance;
+    return false;
   },
 
   /* Levenshtein Distance function (many thanks to James Westgate http://stackoverflow.com/a/11958496)
