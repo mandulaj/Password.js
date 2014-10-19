@@ -1,7 +1,11 @@
-var P = require('../index.js');
+var Password = require('../index.js');
+var expect = require("expect.js")
 
-var s = new P("password@");
-
-console.time('time');
-console.log(s.getEntropy());
-console.timeEnd('time');
+describe('Password', function(){
+  describe('#constructor', function(){
+    it('should return and object', function(){
+      var passwd = new Password("password123")
+      expect(passwd.password).to.equal("password123");
+    })
+  })
+})
