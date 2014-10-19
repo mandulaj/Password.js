@@ -11,6 +11,7 @@ Using `npm`
   $ npm install password.js
 ```
 ```javascript
+// index.js
 var Password = require('password.js');
 ```
 Using `bower`
