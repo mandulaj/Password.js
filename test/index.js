@@ -74,4 +74,58 @@ describe('Password', function(){
        
     });
   });
+  describe('#getCharSet()', function(){
+    it("should return a integer", function(){
+      var ps = new Password("hello");
+      expect(ps.getCharSet()).to.be.a("number");
+      expect(ps.getCharSet()).to.be.above(0);
+    });
+    // TODO: this should be in a loop (maybe a generate function)
+    it('should return the charset size', function(){
+      var ps = new Password("hello");
+      expect(ps.getCharSet()).to.be(26);
+      ps.update("HeLlO")
+      expect(ps.getCharSet()).to.be(52);
+      ps.update("123123")
+      expect(ps.getCharSet()).to.be(10);
+      ps.update("HeLlO123")
+      expect(ps.getCharSet()).to.be(62);
+      ps.update("HeLl O")
+      expect(ps.getCharSet()).to.be(53);
+      ps.update("HeLl@")
+      expect(ps.getCharSet()).to.be(62);
+      ps.update("%#^&*()")
+      expect(ps.getCharSet()).to.be(10);
+      ps.update("HeLlO/")
+      expect(ps.getCharSet()).to.be(72);
+      ps.update("He3#; ")
+      expect(ps.getCharSet()).to.be(93);
+      ps.update("©")
+      expect(ps.getCharSet()).to.be(32);
+      ps.update("À")
+      expect(ps.getCharSet()).to.be(495);
+
+    });
+  });
+  describe("#getEntropy()", function(){
+    it("should return a positiv number", function(){
+      var p = new Password("hello");
+      expect(p.getEntropy()).to.be.a("number");
+      expect(p.getEntropy()).to.be.above(0);
+    });
+    it("should estimate the entropy of a password", function() {
+      var p = new Password("1234567890");
+      expect(p.getEntropy()).to.be.within(33.2,33.3)
+    });
+    it("should ", function(){
+      
+    });
+  });
+  describe("#clean()", function(){
+    it("should remove the password from memory", function(){
+      var p = new Password("secret");
+      p.clean();
+      expect(p.password).to.be("");
+    });
+  });
 });

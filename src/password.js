@@ -99,6 +99,8 @@ Password.prototype = {
       "687": true,
       "879": true,
     };
+    // TODO: Find a better way of doing this (sometimes fails)
+    // TODO: Write a better check (check for correct addition when multiple character of same set are present)
     for (var i = 0, n = passwd.length; i < n; i++) {
       var charCode = passwd.charCodeAt(i);
       if (charCode <= 126) {
