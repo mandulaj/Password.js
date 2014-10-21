@@ -147,6 +147,23 @@ Password.prototype = {
     this.password = "";
   },
 
+
+  /* detect patterns in the password
+   *
+   *
+   */
+  getPatterns: function() {
+    // TODO: Implement
+  },
+
+  /* returns the calculated randomness values of the password
+   *
+   *
+   */
+  getPasswordRandomness: function() {
+    // TODO: Implement
+  },
+
   /* a function used to merge the default options with those provided by th user
    *
    * @param {Object} opts - the new options we want to apply
