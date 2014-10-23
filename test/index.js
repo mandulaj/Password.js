@@ -67,8 +67,8 @@ describe('Password', function() {
         testFlag += 1;
       });
       expect(testFlag).to.be(1);
-      ps.update("newPass")
-      expect(testFlag).to.be(2)
+      ps.update("newPass");
+      expect(testFlag).to.be(2);
     });
     it("should merge new options into old", function() {
 
@@ -84,25 +84,25 @@ describe('Password', function() {
     it('should return the charset size', function() {
       var ps = new Password("hello");
       expect(ps.getCharSet()).to.be(26);
-      ps.update("HeLlO")
+      ps.update("HeLlO");
       expect(ps.getCharSet()).to.be(52);
-      ps.update("123123")
+      ps.update("123123");
       expect(ps.getCharSet()).to.be(10);
-      ps.update("HeLlO123")
+      ps.update("HeLlO123");
       expect(ps.getCharSet()).to.be(62);
-      ps.update("HeLl O")
+      ps.update("HeLl O");
       expect(ps.getCharSet()).to.be(53);
-      ps.update("HeLl@")
+      ps.update("HeLl@");
       expect(ps.getCharSet()).to.be(62);
-      ps.update("%#^&*()")
+      ps.update("%#^&*()");
       expect(ps.getCharSet()).to.be(10);
-      ps.update("HeLlO/")
+      ps.update("HeLlO/");
       expect(ps.getCharSet()).to.be(72);
-      ps.update("He3#; ")
+      ps.update("He3#; ");
       expect(ps.getCharSet()).to.be(93);
-      ps.update("©")
+      ps.update("©");
       expect(ps.getCharSet()).to.be(32);
-      ps.update("À")
+      ps.update("À");
       expect(ps.getCharSet()).to.be(495);
 
     });
@@ -115,7 +115,7 @@ describe('Password', function() {
     });
     it("should estimate the entropy of a password", function() {
       var p = new Password("1234567890");
-      expect(p.getEntropy()).to.be.within(33.2, 33.3)
+      expect(p.getEntropy()).to.be.within(33.2, 33.3);
     });
     it("should ", function() {
 
