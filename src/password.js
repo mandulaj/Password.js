@@ -72,6 +72,10 @@ Password.prototype = {
     return true;
   },
 
+  /* returns the char set size of the password
+   *
+   * @return {Int} - char size of the password
+   */
   getCharSet: function() {
     var charset = 0;
     var passwd = this.password;
@@ -210,7 +214,6 @@ Password.prototype = {
    * @param {String} t - string 2
    * @return {Integer} the Levenshtein distance between string 1 and string 2
    */
-
   _levenshteinDist: function(s, t) {
     var i, j;
     var d = []; //2d matrix
