@@ -1,6 +1,6 @@
 Password.js
 ===========
-
+[![Build Status](https://magnum.travis-ci.com/zpiman/Password.js.svg?token=vvFDFZSuofzT4FtGqYey)](https://magnum.travis-ci.com/zpiman/Password.js)
 Generate a password profile
 
 This small utility helps one analyze the strength of a password using multiple methods. The methods include *dictionary matching, entropy complexity, character set size* and many more.
