@@ -52,7 +52,11 @@ Password.prototype = {
    * @return {Object} - profile of the password (documented in /doc)
    */
   profile: function() {
-    return this.password;
+    var self = this;
+    return {
+      charset: self.getCharSet(),
+      entropy: self.getEntropy(),
+    };
   },
 
   /* checks if the password matches any word in the list of common words
@@ -146,7 +150,6 @@ Password.prototype = {
   clean: function() {
     this.password = "";
   },
-
 
   /* detect patterns in the password
    *
